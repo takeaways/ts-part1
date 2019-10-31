@@ -39,3 +39,45 @@ tsconfig.json
 }
 </code>
 </pre>
+
+### 타입스크립트의 기본 타입
+1. 타입을 고정하기 위한 타입 어노테이션 
+2. [let / const] score : number (숫자형만 넣을 수 있다)
+<pre>
+<code>
+var v1 = 1; // var 키워드는 함수 단위의 스코프를 가진다
+let v2 = 1;
+const v3 = 3;
+
+function outer(){
+    var score = 1;
+    function inner(){
+        console.log(score) // undefined
+        var score = 0 ;
+        console.log(score) // 0
+    }
+    inner();
+    console.log(score); // 1;
+}
+
+outer();
+
+
+function outer1(){
+    if(true){
+        var score = 0;
+    }
+
+    //var 키워드는 함수 단위의 스코프를 가지기 때문에 var i 선언 호이스팅 발생 i ==> 3이 된다 
+    for(var i = 0 ; i < 3 ; i++){
+        setTimeout(()=>{
+            console.log(i);
+        },i*1000)
+    }
+
+    console.log(score); //0
+}
+
+outer1(); // 3
+</code>
+</pre>
