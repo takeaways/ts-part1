@@ -363,6 +363,7 @@ console.log(getDiscount(StarbucksGrade.GREEN))
 
 
 ### 제네릭 001
+0. <제네릭>을 사용하면 원하는 위치의 타입을 정의 시킬 수 있다.
 1. 제네릭을 이용하면 함수를 파라미터를 정의하듯 타입을 파라미터화 할 수 있다.
 <pre>
 <code>
@@ -386,6 +387,101 @@ function createTuple2<T, U>(v: T, v2: U): [T, U]{
 const t1 = createTuple2("user1",202020);
 t1[0]
 t1[1]
+</code>
+</pre>
+
+### 제네릭 002
+1. 제네릭을 이용하면 함수를 파라미터를 정의하듯 타입을 파라미터화 할 수 있다.
+<pre>
+<code>
+
+class LocalDB<T>{
+    constructor(private localStorageKey: string){}
+    add(v: T){
+        localStorage.setItem(this.localStorageKey, JSON.stringify(v));
+    }
+    get(): T{
+        const v = localStorage.getItem(this.localStorageKey);
+        return (v) ? JSON.parse(v) : null;
+    }
+}
+
+interface User { name: string }
+
+const userDb = new LocalDb<User>('user');
+userDb.add({name:'geon'});
+const userA = userDb.get();
+userA.name;
+
+</code>
+</pre>
+
+### 제네릭 003
+1. 제네릭을 이용하면 함수를 파라미터를 정의하듯 타입을 파라미터화 할 수 있다.
+<pre>
+<code>
+
+    interface DB<T>{
+        add(a: T): void;
+        get(): T;
+    }
+
+    class D<T> implement DB<T>{
+
+    }
+
+    interface JSONSerialier{
+        serialize(): string;
+    }
+
+
+    class LocalDB<T extends JSONSerialier> implements DB<T>{
+        constructor(private localStorageKey: string){}
+        add(v: T){
+            localStorage.setItem(this.localStorageKey, v.serialize());
+        }
+        get(): T{
+            const v = localStorage.getItem(this.localStorageKey);
+            return (v) ? JSON.parse(v) : null;
+        }
+    }
+
+    interface User { name: string }
+
+    const userDb = new LocalDb<User>('user');
+    userDb.add({name:'geon'});
+    const userA = userDb.get();
+    userA.name;
+
+
+//조건부 타입
+
+    interface Vegitable{
+        v: string;
+    }
+    interface Mea{
+        m: string;
+    }
+    interface Cart<T>{
+        getItem(): T extends Vegitable ? Vegitable : Meat
+    }
+
+    const cart1: Cart<Vegitable> = {
+        getItem(){
+            return {
+                v: ''
+            }
+        }
+    }
+
+    cart1.getItem();
+
+
+
+
+
+
+
 
 
 
