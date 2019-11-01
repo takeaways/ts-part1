@@ -574,3 +574,25 @@ function checkUser(user: User): UserState {
 
 
 ### 인덱스 타입
+1. 속성은 정해져 있지않고 동적으로 처리할 때.
+<pre>
+<code>
+interface Props {
+    name: string // name은 있어야 함을 보장 받는다.
+    [key: string]: string;
+}
+
+const p: Props = {
+    a: 'd',
+    b: 'e',
+    c: '3',
+    0: 'cc',
+}
+p["a"]
+p[0]
+
+let keys: keyof Props;
+
+</code>
+</pre>
+

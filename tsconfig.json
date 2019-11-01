@@ -11,7 +11,8 @@
         "outDir":"dist",
         "target":"es6",
         "sourceMap": true,
-        "removeComments": true
+        "removeComments": true,
+        "noImplicitAny": true
 
     }
 

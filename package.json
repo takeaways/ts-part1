@@ -4,6 +4,7 @@
   "description": "1. 오픈소스 프로그래밍 언어\r 1. 자바스크립트의 상위 집합으로 ECMA스크립트의 최신 표준을 지원\r 1. 정적인 언어로 컴파일 시간에 타입을 검사\r 1. 장점\r     -   강력한 타입으로 대규모 애플리케이션 개발에 용이\r     -   유명한 자바스크립트 라이브러리와의 편리한 사용\r     -   개발 도구에서 강력한 지원",
   "main": "001_hello.js",
   "scripts": {
+    "dev": "parcel index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/nomadGeonilJang/ts-part1/issues"
   },
-  "homepage": "https://github.com/nomadGeonilJang/ts-part1#readme"
+  "homepage": "https://github.com/nomadGeonilJang/ts-part1#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.6.4"
+  }
 }
