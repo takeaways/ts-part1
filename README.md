@@ -226,3 +226,65 @@ function getDiscount(v: StarbucksGrad): number{
 console.log(getDiscount(StarbucksGrade.GREEN))
 </code>
 </pre>
+
+
+### 클래스 001
+<pre>
+<code>
+    class Cart{
+        constructor(user){
+            this.user = user;
+            this.store = {};
+        }
+
+        put(id, product){
+            this.store[id] = product;
+        }
+
+        get(id){
+            return this.store[id]
+        }
+    }
+
+    const cart1 = new Cart({name:'honh'});
+
+// typescript
+
+    interface User{
+        name: string
+    }
+    interface Product{
+        id: string;
+        price: number;
+    }
+
+    class Cart{
+        //protected user: User;
+        private store: object;
+
+        constructor(protected user: User){
+            //this.user = user;
+            this.store = {};
+        }
+
+        put(id: string, product: Product){
+            this.store[id] = product;
+        }
+
+        get(id: string){
+            return this.store[id]
+        }
+    }
+
+    const cart1 = new Cart({name:'honh'});
+    
+    class PromotionCart extends Card {
+        addPromotion(){
+            this.user // protect 접근 가능
+        }
+    }
+
+    const cart2 = new PromotionCard({name:'hong'});
+
+</code>
+</pre>
