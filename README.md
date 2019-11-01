@@ -360,3 +360,40 @@ console.log(getDiscount(StarbucksGrade.GREEN))
 
 </code>
 </pre>
+
+
+### 제네릭 001
+1. 제네릭을 이용하면 함수를 파라미터를 정의하듯 타입을 파라미터화 할 수 있다.
+<pre>
+<code>
+function createPromise<T>(x: T, timeout:number) {
+    return new Promise((resolve: (v: T) => void, reject) => {
+        setTimeout(() => {
+            resolve(x);
+        });
+    }, timeout);
+}
+
+createPromise(1, 100)
+.then( v => console.log(v) )
+
+
+
+function createTuple2<T, U>(v: T, v2: U): [T, U]{
+    return [v, v2];
+}
+
+const t1 = createTuple2("user1",202020);
+t1[0]
+t1[1]
+
+
+
+
+
+
+
+
+
+</code>
+</pre>
