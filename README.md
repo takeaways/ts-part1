@@ -40,7 +40,7 @@ tsconfig.json
 </code>
 </pre>
 
-### 타입스크립트의 기본 타입
+### 타입스크립트의 기본 타입 001
 1. 타입을 고정하기 위한 타입 어노테이션 
 2. [let / const] score : number (숫자형만 넣을 수 있다)
 <pre>
@@ -81,3 +81,19 @@ function outer1(){
 outer1(); // 3
 </code>
 </pre>
+
+### 타입스크립트의 기본 타입002
+-   타입 어노테이션 let 변수명 : number ...
+1. number
+2. string
+3. boolean
+4. undefined
+5. null
+6. object
+7. symbol
+    -   Symbol(); 유니크한 값이 생성된다
+8. any
+9. list 만들기 : string[] / any[]
+10. 인라인 타입
+    -   let user1 : {name:string, score:number};
+    -   user1 = {name:'hong', score:13}
