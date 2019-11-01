@@ -476,19 +476,61 @@ userA.name;
 
     cart1.getItem();
 
+</code>
+</pre>
+
+### Intersection & Union Types
+1. 여러 타입을 하나로 만든 타입
+2. 합친 타입을 작성하기 위해서 & 연산 자를 사용한다
+<pre>
+<code>
+    interface User {
+        name: string;
+    }
+    interface Action {
+        do(): void;
+    }
+
+    //타입을 하나로 합친 인터페이스로 만들어진 객체를 리턴 받는다.
+    function createUserAction(u: User, a: Action): User & Action {
+        return { ...u, ...a};
+    }
+
+    const u = createUserAction({name:'hong'}, {do(){}});
 
 
+//Union Type
+    function compare(x: string, y: string);
+    function compare(x: number, y: number);
 
+    function compare(x: string | number, y: string | number){
+        if(typeof x === 'number' && typeof y === 'number'){
+            return x === y ? 0 : x > y ? 1 : -1;
+        }
 
+        if(typeof x === 'string' && typeof y === 'string'){
+            return x.localeCompare(y);
+        }
 
+        throw Error('not support type');
+    }
 
+    const v = compare("a", 1);
 
+    
+// 타입가드를 하는 방법
 
+    function isAction(v: User | Action): v is Action {
+        return (<Action>v).do !== undefined;
+    }
 
-
-
-
-
+    function process(v: User | Action) {
+        if(isAction(v)){
+            v.do();
+        }else{
+            console.log( v.name );
+        }
+    }
 
 
 </code>
