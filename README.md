@@ -199,3 +199,30 @@ outer1(); // 3
 
 </code>
 </pre>
+
+### enum 타입
+1. 열거형
+2. 순서가 중요하다
+<pre>
+<code>
+enum StarbuksGrade {
+    WELCOME = 0,
+    DD = 3,
+    GREEN = 1,
+    GOLD = 2
+}
+
+function getDiscount(v: StarbucksGrad): number{
+    switch(v){
+        case StarbucksGrad.WELCOME:
+            return 0;
+        case StarbucksGrad.GREEN:
+            return 5;
+        case StarbucksGrad.GOLD:
+            return 10;
+    }
+}
+
+console.log(getDiscount(StarbucksGrade.GREEN))
+</code>
+</pre>
