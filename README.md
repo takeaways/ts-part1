@@ -535,3 +535,42 @@ userA.name;
 
 </code>
 </pre>
+
+
+### 타입 별칭
+<pre>
+<code>
+interface User {
+    name: string;
+}
+interface Action {
+    do(): void;
+}
+
+type UserAction = User & Action;
+function createUserAction(): UserAction {
+    return {
+        name:"goen",
+        do(){
+
+        }
+    }
+}
+
+type StringOrNumber = string | number;
+type Arr<T> = T[];
+type P<T> = Promise<T>
+
+type UserState = "APPROVED" | "REJECTED";
+function checkUser(user: User): UserState {
+    if(user.login()){
+        return "APPROVED";
+    }
+    return "REJECTED";
+}
+
+</code>
+</pre>
+
+
+### 인덱스 타입
