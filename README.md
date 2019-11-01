@@ -288,3 +288,75 @@ console.log(getDiscount(StarbucksGrade.GREEN))
 
 </code>
 </pre>
+
+
+### 클래스 002
+1. interface 를 통한 클래스 만들기.
+2. absctract 키워드를 이용한 클래스.
+<pre>
+<code>
+    interface Person{
+        name: string;
+        say(message: string): void;
+    }
+
+    interface Programmer{
+        writeCode(requirement: string): string;
+    }
+
+    class KoreanProgrammer implements Person, Progrmmer{
+        constructor(public name: string){
+
+        }
+
+        say(message: string = "hi") : void{
+            console.log(message)
+        }
+
+        writeCode(requirement: string): string{
+            return requirement + '.....';
+        }
+
+    }
+
+    const hong = new KoreamProgrammer('hong');
+    hong.say("Hello"); // Hello
+    hong.writeCode("make somthing special"); // make somthing special .....
+    hong.loveKimchi(); // love ~ kimchi
+
+
+//abstract (추상 클래스)상속받는 클래스에서는 무조건 해당 키워드가 있는 부분을 구현 해야 한다
+    abstact class Korean implements Person {
+
+        public absctract jumin: number;
+
+        constructor(public name: string){}
+        say(msg: string): void{
+            console.log(msg)
+        }
+
+        absctract loveKimchi(): void;
+    }
+
+    class KoreanProgrammer extends Korean implements Programmer{
+        constructor(public name: string, public jumin: number){
+            super(name);
+        }
+
+        say(message: string = "hi") : void{
+            console.log(message)
+        }
+
+        writeCode(requirement: string): string{
+            return requirement + '.....';
+        }
+
+        loveKimchi(){
+            console.log('love ~ kimchi');
+        }
+    }
+
+
+
+</code>
+</pre>
