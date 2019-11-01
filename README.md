@@ -97,3 +97,62 @@ outer1(); // 3
 10. 인라인 타입
     -   let user1 : {name:string, score:number};
     -   user1 = {name:'hong', score:13}
+
+11. 튜플
+    -   let tuple: [number, string];
+
+### 인터페이스
+1. interface라는 키워드를 통해서 정의 한다.
+2. interface가 가져야 하는 행위 / 속성만을 기술 할 수 있다.
+3. interface 속성을 필수가 아닌 값으로 표현하고 싶을때는 ?: 로 사용
+<pre>
+<code>
+    interface TV{
+        turnOn():boolean;
+        turnOff():void;
+    }
+
+    const myTv: TV = {
+        turnOn(){
+            return true;
+        },
+        turnOff(){
+
+        }
+    }
+
+    function tryTurnOn(tv:TV){
+        tv.turnOn();
+    }
+    tryTurnOn(myTv);
+
+//데이터 타입만
+    interface Cell{
+        row: number;
+        col: number;
+        piece?: Piece;
+    }
+
+    interface Piece{
+        move(from: Cell, to: Cell): boolean;
+    }
+
+    function createBoard(){
+        const cells: Cell[] = [];
+        for(let row = 0 ; row < 4 ; row++){
+            for(let col = 0 ; col < 3 ; col++ ){
+                cells.push({ row, col })
+            }
+        }
+        return cells;
+    }
+
+    const board = createBoard();
+    board[0].piece = {
+        move(from: Cell, to: Cell){
+            return true;
+        }
+    }
+
+</code>
+</pre>
