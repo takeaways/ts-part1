@@ -156,3 +156,46 @@ outer1(); // 3
 
 </code>
 </pre>
+
+### 함수형 타입
+1. 반환 되는 타입을 작성 할 수 있다.
+2. 함수의 오버로딩 =
+<pre>
+<code>
+    function add(x: number, y: number):number{
+        return x + y;
+    }
+    const result = add(1, 2);
+
+    function buildUserInfo(name?: string, email?: string){
+        return {name, email};
+    }
+    const user = buildUserInfo();
+
+    function buildUserInfo(name = "-", email = "-"){
+        return {name, email};
+    }
+    const user = buildUserInfo();
+
+    const add2 = (a: number, b: number): number => a  + b;
+
+// 오버로드 ( 함수의 시그니처 )
+    interface Storage{a: string;}
+    interface ColdStorage{b: string;}
+    function store(type: "통조림"): Storage
+    function store(type: "아이스크림"): ColdStorage
+
+    function store(type: "통조림" | "아이스크립"){
+        if(type === "통조림")
+            return { a: "통조림"}
+        else if(type === "아이스크림")
+            return { b: "아이스크립"}
+        else
+            throw new Error('unsupported type');
+    }
+
+    const s = store("통조림");
+    s.a
+
+</code>
+</pre>
